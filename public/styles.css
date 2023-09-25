@@ -1,3 +1,6 @@
+/*Layout styles*/
+
+/*Homepage styles*/
 .homepageContainer {
     justify-content: center;
     margin-top: 20px;
@@ -8,4 +11,30 @@
 }
 .homepageButtonArea {
     margin: 20px auto 1rem;
+}
+.homepageUserLoginArea {
+    color: rgba(30, 30, 30, 0.7);
+    width: 30px;
+    height: 30px;
+    border: solid rgba(30, 30, 30, 0.7) 1px;
+    border-radius: 5px;
+    display: flex;
+}
+.homepageUserLoginArea:hover {
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+}
+#homepageLoginIcon {
+    margin: auto;
+}
+
+/*Combinations:
+Login - Register styles*/
+.loginRegisterIconArea {
+    width: 38px;
+    height: 38px;
+    display: flex;
+}
+.loginRegisterIcons {
+    margin: auto;
 }
