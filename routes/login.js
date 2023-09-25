@@ -1,11 +1,13 @@
 //js
 const express = require('express');
+const {homepageView} = require("../controllers/homepageController");
 const { registerView, loginView } = require('../controllers/loginController');
 const { registerUser, loginUser } = require('../controllers/loginController');
 const { dashboardView } = require("../controllers/dashboardController");
 const { logoutView } = require("../controllers/logoutController");
 const { protectRoute } = require("../auth/protect");
 const router = express.Router();
+router.get('/homepage', homepageView);
 router.get('/register', registerView);
 router.get('/login', loginView);
 router.get("/dashboard", protectRoute, dashboardView);
