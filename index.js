@@ -30,8 +30,8 @@ app.use(passport.session())
 
 //Routes
 app.get('/', (req, res) => {
-    res.redirect('/login');
+    res.redirect('/homepage');
 });
 app.use('/', require('./routes/login'));
-const PORT = process.env.PORT || 4111;
+const PORT = process.env.PORT || 4110;
 app.listen(PORT, console.log("Server has started at port " + PORT))
