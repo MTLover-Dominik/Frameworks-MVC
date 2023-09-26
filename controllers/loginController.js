@@ -4,7 +4,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 //For Register Page
 const registerView = (req, res) => {
-    res.render("register", {});
+    res.render("register", { currentPage: '/register'});
 };
 //Post Request for Register
 const registerUser = (req, res) => {
@@ -51,7 +51,7 @@ const registerUser = (req, res) => {
 };
 // For View
 const loginView = (req, res) => {
-    res.render("login", {});
+    res.render("login", { currentPage: '/login'});
 };
 //Logging in Function
 const loginUser = (req, res) => {
