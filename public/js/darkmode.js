@@ -7,8 +7,11 @@ if (darkMode === null) {
 }
 
 const enableDarkMode = () => {
-    config.navBar.style.backgroundColor = '#505050';
     document.body.style.backgroundColor = '#AAAAAA';
+    config.navBar.style.backgroundColor = '#505050';
+    for (let i = 0; i < config.navBarCtrls.length; i++) {
+        config.navBarCtrls[i].style.border = 'solid rgba(220, 220, 220, 0.7) 1px';
+    }
     config.darkModePicture.setAttribute('alt', 'Sun');
     config.darkModePicture.setAttribute('src', 'pictures/lightmode.png');
     /*if (config.doesSpacesExist === true) {
@@ -30,8 +33,11 @@ const enableDarkMode = () => {
 
 
 const disableDarkMode = () => {
-    config.navBar.style.backgroundColor = '#C7C5C5';
     document.body.style.backgroundColor = '#FFFFFF';
+    config.navBar.style.backgroundColor = '#C7C5C5';
+    for (let i = 0; i < config.navBarCtrls.length; i++) {
+        config.navBarCtrls[i].style.border = 'solid rgba(30, 30, 30, 0.7) 1px';
+    }
     config.darkModeCtrl.setAttribute('alt', 'Moon');
     config.darkModePicture.setAttribute('src', 'pictures/nightmode.png');
     localStorage.setItem("dark-mode", "disabled");

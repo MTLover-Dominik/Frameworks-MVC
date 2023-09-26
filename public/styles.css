@@ -1,8 +1,5 @@
 /*Layout styles
 -----------------------------------------------------*/
-body {
-    background-color: rgba(00, 200, 255, 0.3);
-}
 .rightNavbar {
     display: flex;
     width: 120px;
@@ -15,6 +12,7 @@ body {
     border: solid rgba(30, 30, 30, 0.7) 1px;
     border-radius: 10px;
     display: flex;
+    cursor: pointer;
 }
 .navbarControls:hover {
     color: rgb(0, 0, 0);
