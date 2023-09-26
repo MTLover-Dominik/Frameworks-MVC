@@ -1,5 +1,5 @@
 const homepageView = (req, res) => {
-    res.render("homepage", {});
+    res.render("homepage", { currentPage: '/homepage'});
 };
 
 module.exports = {

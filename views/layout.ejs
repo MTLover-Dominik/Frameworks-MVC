@@ -8,17 +8,25 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" type="text/css" href="/styles.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="/script.js" type="module"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body><!-- Just an image -->
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="/homepage">
-            <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+    <nav class="navbar" id="navbarCustom">
+        <a class="navbar-brand" <%= currentPage === '/homepage' ? '' : 'href=/homepage' %>>
+            <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="50" height="50" alt="">
         </a>
-        <a href="/login" class="homepageUserLoginArea">
-            <i class="far fa-user" id="homepageLoginIcon"></i>
-        </a>
+        <div class="rightNavbar">
+            <div class="navbarControls" id="darkModeControl">
+                <img src="/pictures/nightmode.png" alt="Moon" id="darkModePicture">
+            </div>
+            <a href="/login" class="navbarControlsArea">
+                <div class="navbarControls">
+                    <i class="far fa-user fa-xl" id="loginIcon"></i>
+                </div>
+            </a>
+        </div>
     </nav>
 
