@@ -64,24 +64,24 @@ export function getDarkMode () {
     }
 }
 
-export function DarkModeHover(flag, hover) {
+export function DarkModeHover(hover, flag, element) {
     if (!document.getElementsByClassName('navbarControlsHover')) {
         console.log("%cnavbarControlsHover existiert nicht", "color: red");
-        for (let i = 0; i < config.navBarCtrls.length; i++) {
+        for (let i = 0; i < config.navBarCtrls.length; i++) {   //adjustment
             config.navBarCtrls[i].classList.add('navbarControlsHover');
         }
     }
-    if (hover) {
-        if (flag) {
-            HoverOn("#FFFFFF");
+    if (flag) {
+        if (hover) {
+            HoverOn("#FFFFFF", element);
         } else {
-            HoverOn("#000000");
+            HoverOn("#000000", element);
         }
     } else {
-        if (flag) {
-            HoverOff("rgba(220, 220, 220, 0.7)");
+        if (hover) {
+            HoverOff("rgba(220, 220, 220, 0.7)", element);
         } else {
-            HoverOff("rgba(30, 30, 30, 0.7)");
+            HoverOff("rgba(30, 30, 30, 0.7)", element);
         }
     }
 }

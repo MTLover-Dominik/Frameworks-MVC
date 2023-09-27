@@ -1,21 +1,19 @@
 import * as config from "../config.js";
 
-function adjustStyling (color) {
-    for (let ii = 0; ii < config.navBarCtrlsHover.length; ii++) {
-        config.navBarCtrlsHover[ii].style.color = color;
-        config.navBarCtrlsHover[ii].style.borderColor = color;
-    }
+function adjustStyling (color, element) {
+    config.navBarCtrlsHover[element].style.color = color;
+    config.navBarCtrlsHover[element].style.borderColor = color;
 }
 
-export function HoverOn(color) {
+export function HoverOn(color, element) {
     for (let i = 0; i < config.navBarCtrls.length; i++) {
         config.navBarCtrls[i].classList.add('navbarControlsHover');
-        adjustStyling(color);
+        adjustStyling(color, element);
     }
 }
 
-export function HoverOff(color) {
+export function HoverOff(color, element) {
     for (let i = 0; i < config.navBarCtrls.length; i++) {
-        adjustStyling(color)
+        adjustStyling(color, element)
     }
 }
