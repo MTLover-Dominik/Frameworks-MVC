@@ -14,19 +14,14 @@
     display: flex;
     cursor: pointer;
 }
-.navbarControls:hover {
+.navbarControlsHover {
     color: rgb(0, 0, 0);
     border-color: rgb(0, 0, 0);
 }
 #navbarCustom {
-    background-color: #f8f9fa;
+    background-color: rgb(199, 197, 197);
 }
-#loginIcon {
-    margin: auto;
-}
-#darkModePicture {
-    width: 30px;
-    height: 30px;
+#loginIcon, #darkModeIcon {
     margin: auto;
 }
 
@@ -56,4 +51,7 @@ Login - Register styles
 }
 .loginRegisterIcons {
     margin: auto;
+}
+.disabledButton {
+    cursor: not-allowed;
 }

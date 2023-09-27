@@ -1,6 +1,8 @@
-import * as config from "./config.js";
+import * as config from "../config.js";
+import { HoverOff, HoverOn } from "./darkmodeHover.js";
 
 let darkMode = localStorage.getItem("dark-mode");
+export let isDarkModeOn = false;
 
 if (darkMode === null) {
     localStorage.setItem("dark-mode", "disabled");
@@ -11,35 +13,24 @@ const enableDarkMode = () => {
     config.navBar.style.backgroundColor = '#505050';
     for (let i = 0; i < config.navBarCtrls.length; i++) {
         config.navBarCtrls[i].style.border = 'solid rgba(220, 220, 220, 0.7) 1px';
+        config.navBarCtrls[i].style.color = 'rgba(220, 220, 220, 0.7)';
     }
-    config.darkModePicture.setAttribute('alt', 'Sun');
-    config.darkModePicture.setAttribute('src', 'pictures/lightmode.png');
-    /*if (config.doesSpacesExist === true) {
-        for (let i = 0; i < config.spaces.length; i++) {
-            config.spaces[i].style.backgroundColor = '#838282';
-        }
-    }*/
-    /*if (config.doesInfoAndHeadlineExist === true) {
-        config.infoAndHeadline.style.backgroundColor = '#838282';
-    }
-    if (config.doesDarkmodeChangerExist === true) {
-        config.darkModeChanger.setAttribute('src', 'images/lightmode.png');
-    }
-    if (config.doesSearchpageHeadline === true) {
-        config.headLine.style.color = 'black';
-    }*/
+    config.darkModeIcon.classList.remove("fa-moon");
+    config.darkModeIcon.classList.add("fa-sun");
+    isDarkModeOn = true;
     localStorage.setItem("dark-mode", "enabled");
 };
-
 
 const disableDarkMode = () => {
     document.body.style.backgroundColor = '#FFFFFF';
     config.navBar.style.backgroundColor = '#C7C5C5';
     for (let i = 0; i < config.navBarCtrls.length; i++) {
         config.navBarCtrls[i].style.border = 'solid rgba(30, 30, 30, 0.7) 1px';
+        config.navBarCtrls[i].style.color = 'rgba(30, 30, 30, 0.7)';
     }
-    config.darkModeCtrl.setAttribute('alt', 'Moon');
-    config.darkModePicture.setAttribute('src', 'pictures/nightmode.png');
+    config.darkModeIcon.classList.remove("fa-sun");
+    config.darkModeIcon.classList.add("fa-moon");
+    isDarkModeOn = false;
     localStorage.setItem("dark-mode", "disabled");
 };
 
@@ -55,5 +46,24 @@ export function getDarkMode () {
     }
     if (darkMode === "enabled") {
         disableDarkMode();
+    }
+}
+
+export function DarkModeHover(hover, flag, element) {
+    if (!document.getElementsByClassName('navbarControlsHover')) {
+        config.navBarCtrls[element].classList.add('navbarControlsHover');
+    }
+    if (flag) {
+        if (hover) {
+            HoverOn("#FFFFFF", element);
+        } else {
+            HoverOn("#000000", element);
+        }
+    } else {
+        if (hover) {
+            HoverOff("rgba(220, 220, 220, 0.7)", element);
+        } else {
+            HoverOff("rgba(30, 30, 30, 0.7)", element);
+        }
     }
 }

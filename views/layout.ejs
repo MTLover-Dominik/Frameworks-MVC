@@ -19,9 +19,9 @@
         </a>
         <div class="rightNavbar">
             <div class="navbarControls" id="darkModeControl">
-                <img src="/pictures/nightmode.png" alt="Moon" id="darkModePicture">
+                <i class="far fa-moon fa-xl" id="darkModeIcon"></i>
             </div>
-            <a href="/login" class="navbarControlsArea">
+            <a class="navbarControlsArea" <%= currentPage === '/login' ? '' : 'href=/login' %>>
                 <div class="navbarControls">
                     <i class="far fa-user fa-xl" id="loginIcon"></i>
                 </div>
