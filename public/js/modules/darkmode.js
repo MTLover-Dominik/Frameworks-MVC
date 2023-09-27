@@ -1,6 +1,8 @@
-import * as config from "./config.js";
+import * as config from "../config.js";
+import { HoverOff, HoverOn } from "./darkmodeHover.js";
 
 let darkMode = localStorage.getItem("dark-mode");
+export let isDarkModeOn = false;
 
 if (darkMode === null) {
     localStorage.setItem("dark-mode", "disabled");
@@ -11,9 +13,10 @@ const enableDarkMode = () => {
     config.navBar.style.backgroundColor = '#505050';
     for (let i = 0; i < config.navBarCtrls.length; i++) {
         config.navBarCtrls[i].style.border = 'solid rgba(220, 220, 220, 0.7) 1px';
+        config.navBarCtrls[i].style.color = 'rgba(220, 220, 220, 0.7)';
     }
-    config.darkModePicture.setAttribute('alt', 'Sun');
-    config.darkModePicture.setAttribute('src', 'pictures/lightmode.png');
+    config.darkModeIcon.classList.remove("fa-moon");
+    config.darkModeIcon.classList.add("fa-sun");
     /*if (config.doesSpacesExist === true) {
         for (let i = 0; i < config.spaces.length; i++) {
             config.spaces[i].style.backgroundColor = '#838282';
@@ -28,6 +31,7 @@ const enableDarkMode = () => {
     if (config.doesSearchpageHeadline === true) {
         config.headLine.style.color = 'black';
     }*/
+    isDarkModeOn = true;
     localStorage.setItem("dark-mode", "enabled");
 };
 
@@ -37,9 +41,11 @@ const disableDarkMode = () => {
     config.navBar.style.backgroundColor = '#C7C5C5';
     for (let i = 0; i < config.navBarCtrls.length; i++) {
         config.navBarCtrls[i].style.border = 'solid rgba(30, 30, 30, 0.7) 1px';
+        config.navBarCtrls[i].style.color = 'rgba(30, 30, 30, 0.7)';
     }
-    config.darkModeCtrl.setAttribute('alt', 'Moon');
-    config.darkModePicture.setAttribute('src', 'pictures/nightmode.png');
+    config.darkModeIcon.classList.remove("fa-sun");
+    config.darkModeIcon.classList.add("fa-moon");
+    isDarkModeOn = false;
     localStorage.setItem("dark-mode", "disabled");
 };
 
@@ -55,5 +61,27 @@ export function getDarkMode () {
     }
     if (darkMode === "enabled") {
         disableDarkMode();
+    }
+}
+
+export function DarkModeHover(flag, hover) {
+    if (!document.getElementsByClassName('navbarControlsHover')) {
+        console.log("%cnavbarControlsHover existiert nicht", "color: red");
+        for (let i = 0; i < config.navBarCtrls.length; i++) {
+            config.navBarCtrls[i].classList.add('navbarControlsHover');
+        }
+    }
+    if (hover) {
+        if (flag) {
+            HoverOn("#FFFFFF");
+        } else {
+            HoverOn("#000000");
+        }
+    } else {
+        if (flag) {
+            HoverOff("rgba(220, 220, 220, 0.7)");
+        } else {
+            HoverOff("rgba(30, 30, 30, 0.7)");
+        }
     }
 }
