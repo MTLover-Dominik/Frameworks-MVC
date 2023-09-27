@@ -21,7 +21,7 @@
             <div class="navbarControls" id="darkModeControl">
                 <i class="far fa-moon fa-xl" id="darkModeIcon"></i>
             </div>
-            <a href="/login" class="navbarControlsArea">
+            <a class="navbarControlsArea" <%= currentPage === '/login' ? '' : 'href=/login' %>>
                 <div class="navbarControls">
                     <i class="far fa-user fa-xl" id="loginIcon"></i>
                 </div>

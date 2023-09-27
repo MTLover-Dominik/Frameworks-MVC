@@ -17,24 +17,9 @@ const enableDarkMode = () => {
     }
     config.darkModeIcon.classList.remove("fa-moon");
     config.darkModeIcon.classList.add("fa-sun");
-    /*if (config.doesSpacesExist === true) {
-        for (let i = 0; i < config.spaces.length; i++) {
-            config.spaces[i].style.backgroundColor = '#838282';
-        }
-    }*/
-    /*if (config.doesInfoAndHeadlineExist === true) {
-        config.infoAndHeadline.style.backgroundColor = '#838282';
-    }
-    if (config.doesDarkmodeChangerExist === true) {
-        config.darkModeChanger.setAttribute('src', 'images/lightmode.png');
-    }
-    if (config.doesSearchpageHeadline === true) {
-        config.headLine.style.color = 'black';
-    }*/
     isDarkModeOn = true;
     localStorage.setItem("dark-mode", "enabled");
 };
-
 
 const disableDarkMode = () => {
     document.body.style.backgroundColor = '#FFFFFF';
@@ -66,10 +51,7 @@ export function getDarkMode () {
 
 export function DarkModeHover(hover, flag, element) {
     if (!document.getElementsByClassName('navbarControlsHover')) {
-        console.log("%cnavbarControlsHover existiert nicht", "color: red");
-        for (let i = 0; i < config.navBarCtrls.length; i++) {   //adjustment
-            config.navBarCtrls[i].classList.add('navbarControlsHover');
-        }
+        config.navBarCtrls[element].classList.add('navbarControlsHover');
     }
     if (flag) {
         if (hover) {

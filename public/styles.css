@@ -52,3 +52,6 @@ Login - Register styles
 .loginRegisterIcons {
     margin: auto;
 }
+.disabledButton {
+    cursor: not-allowed;
+}

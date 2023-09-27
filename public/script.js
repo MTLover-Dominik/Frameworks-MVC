@@ -1,5 +1,6 @@
 import * as config from "./js/config.js"
 import { DarkModeHover, isDarkModeOn, getDarkMode} from "./js/modules/darkmode.js";
+import { RestrictionLogin, RestrictionRegister } from "./js/modules/restrictionsLoginRegister.js";
 
 config.darkModeCtrl.addEventListener('click', getDarkMode, false);
 config.navBarCtrls[0].addEventListener('mouseover', () => {
@@ -14,3 +15,10 @@ config.navBarCtrls[1].addEventListener('mouseover', () => {
 config.navBarCtrls[1].addEventListener('mouseleave', () => {
     DarkModeHover(isDarkModeOn, false, 1);
 }, false);
+
+if (config.isCurrentPageLoginPage) {
+    config.loginForm.addEventListener('input', RestrictionLogin, false);
+}
+if (config.isCurrentPageRegisterPage) {
+    config.registrationForm.addEventListener('input', RestrictionRegister, false);
+}
