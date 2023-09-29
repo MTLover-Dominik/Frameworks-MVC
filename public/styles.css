@@ -55,3 +55,26 @@ Login - Register styles
 .disabledButton {
     cursor: not-allowed;
 }
+.loginRegisterErrorText {
+
+}
+.loginRegisterPasswordSpecs {
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 0;
+    font-size: 14px;
+}
+.loginRegisterPasswordSpecsList {
+    font-size: 12px;
+}
+#outputField {
+    display: flex;
+    flex-direction: column;
+}
+#errorOutput {
+    display: none;
+    text-align: left;
+}
+#passwordOutput {
+    align-self: center;
+}
