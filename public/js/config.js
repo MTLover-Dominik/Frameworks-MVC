@@ -2,14 +2,9 @@
 export const isCurrentPageLoginPage = !!document.getElementById('loginTitle');
 export const isCurrentPageRegisterPage = !!document.getElementById('registerTitle');
 
-//For validation
-export const passwordLength = document.getElementById('passwordLength');
-export const passwordUppercaseLetter = document.getElementById('passwordBigLetter');
-export const passwordLowercaseLetter = document.getElementById('passwordSmallLetter');
-export const passwordNumber = document.getElementById('passwordNumber');
-export const passwordSpecialChar = document.getElementById('passwordSpecialChar');
 
 //Not global elements
+export const outputField = document.getElementById('outputField')
 export const loginForm = document.getElementById('loginForm')
 export const registrationForm = document.getElementById('registrationForm');
 export const nameField = document.getElementById('name');
@@ -18,6 +13,7 @@ export const passwordField = document.getElementById('password');
 export const confirmPasswordField = document.getElementById('confirm')
 export const loginButton = document.getElementById('loginButton');
 export const registerButton = document.getElementById('registerButton');
+
 
 //Global elements
 export const navBar = document.getElementById('navbarCustom');

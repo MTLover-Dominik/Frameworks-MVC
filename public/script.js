@@ -1,7 +1,8 @@
 import * as config from "./js/config.js"
 import { DarkModeHover, isDarkModeOn, getDarkMode} from "./js/modules/darkmode.js";
 import { RestrictionLogin, RestrictionRegister } from "./js/modules/restrictionsLoginRegister.js";
-import {ValidatePassword} from "./js/modules/validation.js";
+import { ValidatePassword } from "./js/modules/validators/password.js";
+import { DomElementController } from "./js/modules/domElementController.js";
 
 config.darkModeCtrl.addEventListener('click', getDarkMode, false);
 config.navBarCtrls[0].addEventListener('mouseover', () => {
@@ -18,11 +19,20 @@ config.navBarCtrls[1].addEventListener('mouseleave', () => {
 }, false);
 
 if (config.isCurrentPageLoginPage) {
+    config.passwordField.addEventListener('focusin', () => {
+        DomElementController("createPasswordSpecs");
+    }, false);
+    config.passwordField.addEventListener('focusout', () => {
+        DomElementController("removePasswordSpecs");
+    }, false);
     config.loginForm.addEventListener('input', () => {
-        ValidatePassword();
+        ValidatePassword("loginPage");
         RestrictionLogin();
     }, false);
 }
 if (config.isCurrentPageRegisterPage) {
-    config.registrationForm.addEventListener('input', RestrictionRegister, false);
+    config.registrationForm.addEventListener('input', () => {
+        ValidatePassword("registerPage");
+        RestrictionRegister();
+    }, false);
 }
