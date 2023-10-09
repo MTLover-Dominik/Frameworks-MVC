@@ -74,6 +74,7 @@ Login - Register styles
 }
 .showPasswordIcon, .confirmationStatusIcon {
     margin: auto;
+    color: dimgray;
 }
 .disabledButton {
     cursor: not-allowed;

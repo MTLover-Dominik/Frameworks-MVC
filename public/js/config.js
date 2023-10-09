@@ -11,7 +11,9 @@ export const registrationForm = document.getElementById('registrationForm');
 export const nameField = document.getElementById('name');
 export const emailField = document.getElementById('email');
 export const passwordField = document.getElementById('password');
-export const confirmPasswordField = document.getElementById('confirm')
+export const confirmPasswordField = document.getElementById('confirm');
+export const showPasswordIcon = document.getElementById('showPassword');
+export const showConfirmationIcon = document.getElementById('showConfirmation');
 export const loginButton = document.getElementById('loginButton');
 export const registerButton = document.getElementById('registerButton');
 

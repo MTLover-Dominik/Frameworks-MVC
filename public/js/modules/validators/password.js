@@ -56,7 +56,6 @@ function PasswordSpecialChar () {
 }
 
 export function ValidatePassword () {
-    console.log("%cPassword validation was triggered!", "color: red");
     PasswordLength();
     PasswordUppercaseLetter();
     PasswordLowercaseLetter();

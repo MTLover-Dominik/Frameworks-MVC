@@ -1,8 +1,13 @@
 import * as config from "../config.js";
 import { createPasswordOutputField, removeOutputField } from "./domElements/outputArea.js";
-import {ChangeConfirmationStatus, HideConfirmationStatus, ShowConfirmationStatus} from "./domElements/inputActions.js";
+import {
+    ChangeConfirmationStatus,
+    HideConfirmationStatus,
+    PasswordVisibility,
+    ShowConfirmationStatus,
+} from "./domElements/inputActions.js";
 
-export function DomElementController (action) {
+export function DomElementController (action, element, icon) {
     switch (action) {
         case "createPasswordSpecs" :
             createPasswordOutputField();
@@ -10,17 +15,8 @@ export function DomElementController (action) {
         case "removePasswordSpecs":
             removeOutputField();
             break;
-        case "showPassword":
-            //function for showing password
-            break;
-        case "hidePassword":
-            //function for hiding the password
-            break;
-        case "showPasswordConfirmation":
-            //function for checking passwords
-            break;
-        case "hidePasswordConfirmation":
-            //function for remove checking of passwords
+        case "passwordVisibility":
+            PasswordVisibility(element, icon);
             break;
         case "showConfirmationStatus":
             ShowConfirmationStatus();

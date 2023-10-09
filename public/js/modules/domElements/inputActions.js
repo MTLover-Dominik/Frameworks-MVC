@@ -1,17 +1,15 @@
 import * as config from "../../config.js";
 
-export function ShowPassword() {
-
-}
-export function HidePassword() {
-
-}
-
-export function ShowPasswordConfirmation() {
-
-}
-export function HidePasswordConfirmation() {
-
+export function PasswordVisibility(element, elementIcon) {
+    if (element.type === "password") {
+        element.type = "text";
+        elementIcon.classList.remove("fa-eye");
+        elementIcon.classList.add("fa-eye-slash");
+    } else if (element.type === "text") {
+        element.type = "password";
+        elementIcon.classList.remove("fa-eye-slash");
+        elementIcon.classList.add("fa-eye");
+    }
 }
 
 export function ShowConfirmationStatus() {
