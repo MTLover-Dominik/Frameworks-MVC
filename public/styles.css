@@ -1,5 +1,14 @@
 /*Layout styles
 -----------------------------------------------------*/
+.leftNavbar {
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+}
+.navbar-brand {
+    margin-right: 0;
+    width: 60px;
+}
 .rightNavbar {
     display: flex;
     width: 120px;
@@ -17,6 +26,9 @@
 .navbarControlsHover {
     color: rgb(0, 0, 0);
     border-color: rgb(0, 0, 0);
+}
+#bootstrapLogo {
+    margin: auto;
 }
 #navbarCustom {
     background-color: rgb(199, 197, 197);
@@ -52,6 +64,17 @@ Login - Register styles
 .loginRegisterIcons {
     margin: auto;
 }
+.showPassword, .confirmationStatus {
+    width: 38px;
+    display: flex;
+    justify-content: center;
+}
+.confirmationStatus {
+    display: none;
+}
+.showPasswordIcon, .confirmationStatusIcon {
+    margin: auto;
+}
 .disabledButton {
     cursor: not-allowed;
 }
@@ -66,6 +89,9 @@ Login - Register styles
 }
 .loginRegisterPasswordSpecsList {
     font-size: 12px;
+}
+#confirmIcon {
+    color: red;
 }
 #outputField {
     display: flex;

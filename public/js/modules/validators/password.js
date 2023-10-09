@@ -55,17 +55,13 @@ function PasswordSpecialChar () {
     return false;
 }
 
-export function ValidatePassword (flag) {
+export function ValidatePassword () {
+    console.log("%cPassword validation was triggered!", "color: red");
     PasswordLength();
     PasswordUppercaseLetter();
     PasswordLowercaseLetter();
     PasswordNumber();
     PasswordSpecialChar();
 
-    if (flag === "registerPage") {
-        if (PasswordLength() && PasswordUppercaseLetter() && PasswordLowercaseLetter() && PasswordNumber() && PasswordSpecialChar()) {
-            return true;
-        }
-    }
-    return false;
+    return PasswordLength() && PasswordUppercaseLetter() && PasswordLowercaseLetter() && PasswordNumber() && PasswordSpecialChar();
 }

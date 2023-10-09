@@ -1,6 +1,7 @@
 //Not global elements query
 export const isCurrentPageLoginPage = !!document.getElementById('loginTitle');
 export const isCurrentPageRegisterPage = !!document.getElementById('registerTitle');
+export const isCurrentPageDashboardPage = !!document.getElementById('dashboardTitle');
 
 
 //Not global elements

@@ -40,6 +40,9 @@
                                         <i class="fa fa-lock fa-lg loginRegisterIcons" aria-hidden="true"></i>
                                     </span>
                                     <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                    <span class="showPassword">
+                                        <i class="fa fa-eye showPasswordIcon" aria-hidden="true" id="showPassword"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -51,11 +54,20 @@
                                         <i class="fa fa-lock fa-lg loginRegisterIcons" aria-hidden="true"></i>
                                     </span>
                                     <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                                    <span class="showPassword">
+                                        <i class="fa fa-eye showPasswordIcon" aria-hidden="true" id="showConfirmation"></i>
+                                    </span>
+                                    <span class="confirmationStatus" id="statusIcon">
+                                        <i class="fa fa-xmark fa-lg confirmationStatusIcon" aria-hidden="true" id="confirmIcon"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group ">
                             <button type="submit" class="btn btn-primary btn-lg btn-block login-button disabledButton" id="registerButton" disabled="disabled">Register</button>
+                        </div>
+                        <div id="outputField">
+                            <p class="loginRegisterErrorText" id="errorOutput">hello</p>
                         </div>
                         <div class="login-register">
                             <a href="/login">Login</a>

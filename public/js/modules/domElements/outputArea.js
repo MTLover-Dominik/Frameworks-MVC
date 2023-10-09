@@ -1,50 +1,53 @@
 import * as config from "../../config.js"
 
-export function createOutputField() {
+export function createPasswordOutputField() {
+    const doesPasswordOutputExist = !!document.getElementById("passwordOutput")
+    if (!doesPasswordOutputExist) {
+        const passwordOutput = document.createElement('div');
+        passwordOutput.id = 'passwordOutput';
 
+        const passwordSpecs = document.createElement('p');
+        passwordSpecs.className = 'loginRegisterPasswordSpecs';
+        passwordSpecs.textContent = 'Your Password needs at least:';
 
-    const passwordOutput = document.createElement('div');
-    passwordOutput.id = 'passwordOutput';
+        const passwordSpecsList = document.createElement('ul');
+        passwordSpecsList.className = 'loginRegisterPasswordSpecsList';
 
-    const passwordSpecs = document.createElement('p');
-    passwordSpecs.className = 'loginRegisterPasswordSpecs';
-    passwordSpecs.textContent = 'Your Password needs at least:';
+        const requirementsIds = [
+            'passwordLength',
+            'passwordUppercaseLetter',
+            'passwordLowercaseLetter',
+            'passwordNumber',
+            'passwordSpecialChar'
+        ];
 
-    const passwordSpecsList = document.createElement('ul');
-    passwordSpecsList.className = 'loginRegisterPasswordSpecsList';
+        const requirements = [
+            'A length of at least 8',
+            'One uppercase letter',
+            'One lowercase letter',
+            'One number',
+            'One special character'
+        ];
 
-    const requirementsIds = [
-        'passwordLength',
-        'passwordUppercaseLetter',
-        'passwordLowercaseLetter',
-        'passwordNumber',
-        'passwordSpecialChar'
-    ];
+        requirements.forEach((requirementText, index) => {
+            const listItem = document.createElement('li');
+            listItem.id = requirementsIds[index];
+            listItem.textContent = requirementText;
+            passwordSpecsList.appendChild(listItem);
+        });
 
-    const requirements = [
-        'A length of at least 8',
-        'One uppercase letter',
-        'One lowercase letter',
-        'One number',
-        'One special character'
-    ];
-
-    requirements.forEach((requirementText, index) => {
-        const listItem = document.createElement('li');
-        listItem.id = requirementsIds[index];
-        listItem.textContent = requirementText;
-        passwordSpecsList.appendChild(listItem);
-    });
-
-    passwordOutput.appendChild(passwordSpecs);
-    passwordOutput.appendChild(passwordSpecsList);
-    config.outputField.appendChild(passwordOutput);
+        passwordOutput.appendChild(passwordSpecs);
+        passwordOutput.appendChild(passwordSpecsList);
+        config.outputField.appendChild(passwordOutput);
+    } else if (doesPasswordOutputExist) {
+        const passwordOutput = document.getElementById('passwordOutput');
+        passwordOutput.style.display = "block";
+    }
 }
 
 export function removeOutputField () {
     const passwordOutput = document.getElementById('passwordOutput');
-    passwordOutput.remove();
-    console.log("%cDeleted: " + passwordOutput, "color: orange")
+    passwordOutput.style.display = "none";
 }
 
 /*function hiExamlple () {
