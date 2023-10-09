@@ -56,6 +56,7 @@ const loginView = (req, res) => {
 //Logging in Function
 const loginUser = (req, res) => {
     const { email, password } = req.body;
+    let success = false;
     //Required
     if (!email || !password) {
         console.log("Please fill in all the fields");
@@ -64,10 +65,20 @@ const loginUser = (req, res) => {
             password,
         });
     } else {
-        passport.authenticate("local", {
-            successRedirect: "/dashboard",
-            failureRedirect: "/login",
-            failureFlash: true,
+        passport.authenticate("local", (err, user) => {
+            if (err) {
+                console.log("An error occurred during login.");
+                res.redirect("/login");
+            } else if (!user) {
+                console.log("Login failed. Invalid credentials.");
+                res.redirect("/login");
+            } else {
+                // Login erfolgreich
+                success = true;
+                // Setze den Erfolg-Status im localStorage
+                localStorage.setItem("loginSuccess", success);
+                res.redirect("/dashboard");
+            }
         })(req, res);
     }
 };

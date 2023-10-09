@@ -2,7 +2,7 @@ import * as config from "../config.js";
 import { HoverOff, HoverOn } from "./darkmodeHover.js";
 
 let darkMode = localStorage.getItem("dark-mode");
-export let isDarkModeOn = false;
+let isDarkModeOn = false;
 
 if (darkMode === null) {
     localStorage.setItem("dark-mode", "disabled");
@@ -49,18 +49,18 @@ export function getDarkMode () {
     }
 }
 
-export function DarkModeHover(hover, flag, element) {
+export function DarkModeHover(flag, element) {
     if (!document.getElementsByClassName('navbarControlsHover')) {
         config.navBarCtrls[element].classList.add('navbarControlsHover');
     }
     if (flag) {
-        if (hover) {
+        if (isDarkModeOn) {
             HoverOn("#FFFFFF", element);
         } else {
             HoverOn("#000000", element);
         }
     } else {
-        if (hover) {
+        if (isDarkModeOn) {
             HoverOff("rgba(220, 220, 220, 0.7)", element);
         } else {
             HoverOff("rgba(30, 30, 30, 0.7)", element);

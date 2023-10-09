@@ -5,6 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>MVC</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/x-icon" href="/pictures/tstyTrue64.png">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" type="text/css" href="/styles.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -14,9 +15,12 @@
 </head>
 <body><!-- Just an image -->
     <nav class="navbar" id="navbarCustom">
-        <a class="navbar-brand" <%= currentPage === '/homepage' ? '' : 'href=/homepage' %>>
-            <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="50" height="50" alt="">
-        </a>
+        <div class="leftNavbar">
+            <a class="navbar-brand" <%= currentPage === '/homepage' ? '' : 'href=/homepage' %>>
+                <img src="/pictures/tstyTrue64.png" width="50" height="50" alt="Logo">
+            </a>
+            <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="50" height="50" alt="Bootstrap" id="bootstrapLogo">
+        </div>
         <div class="rightNavbar">
             <div class="navbarControls" id="darkModeControl">
                 <i class="far fa-moon fa-xl" id="darkModeIcon"></i>
