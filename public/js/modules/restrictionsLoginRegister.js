@@ -1,6 +1,8 @@
 import * as config from "../config.js";
+import { ValidatePassword } from "./validators/password.js";
+import { ValidateEmail } from "./validators/email.js";
 
-export function RestrictionLogin () {
+function Login () {
     if (config.emailField.value !== "" && config.passwordField.value !== "") {
         config.loginButton.removeAttribute('disabled');
         config.loginButton.classList.remove('disabledButton')
@@ -10,12 +12,28 @@ export function RestrictionLogin () {
     }
 }
 
-export function RestrictionRegister () {
-    if (config.nameField.value !== "" && config.emailField.value !== "" && config.passwordField.value !== "" && config.confirmPasswordField.value !== "") {
-        config.registerButton.removeAttribute('disabled');
-        config.registerButton.classList.remove('disabledButton')
+function Register () {
+    if (config.nameField.value !== ""
+        && config.emailField.value !== ""
+        && config.passwordField.value !== ""
+        && config.confirmPasswordField.value !== ""
+        && config.passwordField.value === config.confirmPasswordField.value
+    ) {
+        if (ValidatePassword() && ValidateEmail()) {
+            config.registerButton.removeAttribute('disabled');
+            config.registerButton.classList.remove('disabledButton');
+        }
     } else {
         config.registerButton.setAttribute('disabled', 'disabled');
         config.registerButton.classList.add('disabledButton');
+    }
+}
+
+export function Restriction (page) {
+    if (page === "login") {
+        Login();
+    }
+    if (page === "register") {
+        Register()
     }
 }

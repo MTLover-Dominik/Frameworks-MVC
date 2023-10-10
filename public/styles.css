@@ -1,5 +1,14 @@
 /*Layout styles
 -----------------------------------------------------*/
+.leftNavbar {
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+}
+.navbar-brand {
+    margin-right: 0;
+    width: 60px;
+}
 .rightNavbar {
     display: flex;
     width: 120px;
@@ -17,6 +26,12 @@
 .navbarControlsHover {
     color: rgb(0, 0, 0);
     border-color: rgb(0, 0, 0);
+}
+#logo {
+    border-radius: 10px;
+}
+#bootstrapLogo {
+    margin: auto;
 }
 #navbarCustom {
     background-color: rgb(199, 197, 197);
@@ -52,6 +67,49 @@ Login - Register styles
 .loginRegisterIcons {
     margin: auto;
 }
+.showPassword, .confirmationStatus {
+    width: 38px;
+    display: flex;
+    justify-content: center;
+}
+.confirmationStatus {
+    display: none;
+}
+.showPasswordIcon, .confirmationStatusIcon {
+    margin: auto;
+    color: dimgray;
+}
 .disabledButton {
     cursor: not-allowed;
+}
+.loginRegisterErrorText {
+
+}
+.loginRegisterPasswordSpecs {
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 0;
+    font-size: 14px;
+}
+.loginRegisterPasswordSpecsList {
+    font-size: 12px;
+}
+#emailRequirementResult {
+    margin-left: 40px;
+    color: rgb(200, 0, 0);
+    display: none;
+}
+#confirmIcon {
+    color: red;
+}
+#outputField {
+    display: flex;
+    flex-direction: column;
+}
+#errorOutput {
+    display: none;
+    text-align: left;
+}
+#passwordOutput {
+    align-self: center;
 }
