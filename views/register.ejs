@@ -29,6 +29,10 @@
                                     </span>
                                     <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
                                 </div>
+                                <span id="emailRequirementResult">
+                                    <i class="fa fa-triangle-exclamation" id="emailValidationIcon"></i>
+                                    Email invalid
+                                </span>
                             </div>
                         </div>
 
@@ -40,7 +44,7 @@
                                         <i class="fa fa-lock fa-lg loginRegisterIcons" aria-hidden="true"></i>
                                     </span>
                                     <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
-                                    <span class="showPassword">
+                                    <span class="showPassword" id="passwordShowPassword">
                                         <i class="fa fa-eye showPasswordIcon" aria-hidden="true" id="showPassword"></i>
                                     </span>
                                 </div>
@@ -54,11 +58,11 @@
                                         <i class="fa fa-lock fa-lg loginRegisterIcons" aria-hidden="true"></i>
                                     </span>
                                     <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
-                                    <span class="showPassword">
-                                        <i class="fa fa-eye showPasswordIcon" aria-hidden="true" id="showConfirmation"></i>
-                                    </span>
                                     <span class="confirmationStatus" id="statusIcon">
                                         <i class="fa fa-xmark fa-lg confirmationStatusIcon" aria-hidden="true" id="confirmIcon"></i>
+                                    </span>
+                                    <span class="showPassword" id="confirmShowPassword">
+                                        <i class="fa fa-eye showPasswordIcon" aria-hidden="true" id="showConfirmation"></i>
                                     </span>
                                 </div>
                             </div>
