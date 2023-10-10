@@ -27,6 +27,9 @@
     color: rgb(0, 0, 0);
     border-color: rgb(0, 0, 0);
 }
+#logo {
+    border-radius: 10px;
+}
 #bootstrapLogo {
     margin: auto;
 }
@@ -90,6 +93,11 @@ Login - Register styles
 }
 .loginRegisterPasswordSpecsList {
     font-size: 12px;
+}
+#emailRequirementResult {
+    margin-left: 40px;
+    color: rgb(200, 0, 0);
+    display: none;
 }
 #confirmIcon {
     color: red;

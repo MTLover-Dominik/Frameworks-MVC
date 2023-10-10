@@ -1,5 +1,6 @@
 import * as config from "../config.js";
 import { ValidatePassword } from "./validators/password.js";
+import { ValidateEmail } from "./validators/email.js";
 
 function Login () {
     if (config.emailField.value !== "" && config.passwordField.value !== "") {
@@ -18,7 +19,7 @@ function Register () {
         && config.confirmPasswordField.value !== ""
         && config.passwordField.value === config.confirmPasswordField.value
     ) {
-        if (ValidatePassword()) {
+        if (ValidatePassword() && ValidateEmail()) {
             config.registerButton.removeAttribute('disabled');
             config.registerButton.classList.remove('disabledButton');
         }

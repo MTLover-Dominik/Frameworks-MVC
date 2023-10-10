@@ -1,9 +1,9 @@
-export function IconHovered (hoverFlag, element) {
+export function IconHovered (hoverFlag, element, colorElement) {
     if (hoverFlag) {
-        element.style.color = "black";
+        colorElement.style.color = "black";
         element.style.cursor = "pointer";
     } else {
-        element.style.color = "dimgray";
+        colorElement.style.color = "dimgray";
         element.style.cursor = "auto";
     }
 }
