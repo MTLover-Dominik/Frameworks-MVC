@@ -1,7 +1,6 @@
 export class InputActions {
-    constructor(status = false, passwordStatus = false) {
+    constructor(status = false) {
         this.status = status;
-        this.passwordStatus = passwordStatus;
     }
 
     showElement(element, value) {
@@ -35,13 +34,12 @@ export class InputActions {
             elementIcon.classList.add("fa-eye");
         }
     }
-    changeConfirmationStatus() {
-        const confirmationStatusIcon = document.getElementById("confirmIcon");
-        if (!this.passwordStatus) {
+    changeConfirmationStatus(confirmationStatusIcon, passwordStatus) {
+        if (!passwordStatus) {
             confirmationStatusIcon.classList.remove("fa-check");
             confirmationStatusIcon.classList.add("fa-xmark");
             confirmationStatusIcon.style.color = "red";
-        } else if (this.passwordStatus) {
+        } else if (passwordStatus) {
             confirmationStatusIcon.classList.remove("fa-xmark");
             confirmationStatusIcon.classList.add("fa-check");
             confirmationStatusIcon.style.color = "green";

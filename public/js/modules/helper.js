@@ -1,20 +1,18 @@
 export class IconHoverHandler {
-    constructor(hoverFlag, element, colorElement) {
-        this.hoverFlag = hoverFlag;
-        this.element = element;
-        this.colorElement = colorElement;
+    constructor() {
+
     }
 
-    hovered() {
-        if (this.hoverFlag) {
-            this.colorElement.style.color = "black";
-            this.element.style.cursor = "pointer";
+    hovered(hoverFlag, element, colorElement) {
+        if (hoverFlag) {
+            colorElement.style.color = "black";
+            element.style.cursor = "pointer";
         }
     }
-    unHovered() {
-        if (!this.hoverFlag) {
-                this.colorElement.style.color = "dimgray";
-                this.element.style.cursor = "auto";
-            }
+    unHovered(hoverFlag, element, colorElement) {
+        if (!hoverFlag) {
+            colorElement.style.color = "dimgray";
+            element.style.cursor = "auto";
+        }
     }
 }
