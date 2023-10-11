@@ -1,43 +1,42 @@
 import * as config from "../config.js";
-import { createPasswordOutputField, removeOutputField } from "./domElements/outputArea.js";
-import {
-    ShowEmailValidationMessage,
-    EmailValidationStatus,
-    HideEmailValidationMessage,
-    PasswordVisibility,
-    ShowConfirmationStatus,
-    ChangeConfirmationStatus,
-    HideConfirmationStatus,
-} from "./domElements/inputActions.js";
+import { OutputArea } from "./domElements/outputArea.js";
+import { InputActions } from "./domElements/inputActions.js";
 
-export function DomElementController (action, element, icon, status) {
+export function DomElementController (action, element = HTMLElement, icon, status = false) {
+    const inputAction = new InputActions(status, config.passwordField.value === config.confirmPasswordField.value);
+    const outputArea = new OutputArea();
+
+    if (typeof element === 'undefined' || element instanceof HTMLElement) {
+        element = element || "";
+    }
+
     switch (action) {
         case "showEmailValidationMessage":
-            ShowEmailValidationMessage();
+            inputAction.showElement(config.emailRequirements, "block");
             break;
         case "emailValidationStatus":
-            EmailValidationStatus(status);
+            inputAction.isEmailValid(status);
             break;
         case "hideEmailValidationMessage":
-            HideEmailValidationMessage();
+            inputAction.hideElement(config.emailRequirements, "none");
             break;
         case "createPasswordSpecs" :
-            createPasswordOutputField();
+            outputArea.createPasswordOutput();
             break;
         case "removePasswordSpecs":
-            removeOutputField();
+            outputArea.removePasswordOutput();
             break;
         case "passwordVisibility":
-            PasswordVisibility(element, icon);
+            inputAction.isPasswordVisible(element, icon);
             break;
         case "showConfirmationStatus":
-            ShowConfirmationStatus();
+            inputAction.showElement(document.getElementById("statusIcon"), "flex");
             break;
         case "changeConfirmationStatus":
-            ChangeConfirmationStatus(config.passwordField.value === config.confirmPasswordField.value);
+            inputAction.changeConfirmationStatus();
             break;
         case "hideConfirmationStatus":
-            HideConfirmationStatus();
+            inputAction.hideElement(document.getElementById("statusIcon"), "none")
             break;
     }
 }

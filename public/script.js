@@ -3,7 +3,7 @@ import { DarkModeHover, getDarkMode} from "./js/modules/darkmode.js";
 import { Restriction } from "./js/modules/restrictionsLoginRegister.js";
 import { ValidatePassword } from "./js/modules/validators/password.js";
 import { DomElementController } from "./js/modules/domElementController.js";
-import { IconHovered } from "./js/modules/helper.js";
+import { IconHoverHandler } from "./js/modules/helper.js";
 import { ValidateEmail } from "./js/modules/validators/email.js";
 
 function LoginStatus () {
@@ -39,7 +39,7 @@ if (config.isCurrentPageRegisterPage) {
     config.emailField.addEventListener('focusin', () => {
         DomElementController("showEmailValidationMessage")
         document.addEventListener('keyup', () => {
-            DomElementController("emailValidationStatus", "", "", ValidateEmail());
+            DomElementController("emailValidationStatus","", "",  ValidateEmail());
         }, false);
     }, false);
     config.emailField.addEventListener('focusout', () => {
@@ -55,10 +55,12 @@ if (config.isCurrentPageRegisterPage) {
         DomElementController("removePasswordSpecs");
     }, false);
     config.showPassword.addEventListener('mouseover', () => {
-        IconHovered(true, config.showPassword, config.showPasswordIcon);
+        const passwordIcon = new IconHoverHandler(true, config.showPassword, config.showPasswordIcon);
+        passwordIcon.hovered();
     });
     config.showPassword.addEventListener('mouseleave', () => {
-        IconHovered(false, config.showPassword, config.showPasswordIcon);
+        const passwordIcon = new IconHoverHandler(false, config.showPassword, config.showPasswordIcon);
+        passwordIcon.unHovered();
     });
     config.showPassword.addEventListener('click', () => {
         DomElementController("passwordVisibility", config.passwordField, config.showPasswordIcon);
@@ -73,10 +75,12 @@ if (config.isCurrentPageRegisterPage) {
         DomElementController("hideConfirmationStatus");
     }, false);
     config.showConfirm.addEventListener('mouseover', () => {
-        IconHovered(true, config.showConfirm, config.showConfirmationIcon);
+        const confirmIcon = new IconHoverHandler(true, config.showConfirm, config.showConfirmationIcon);
+        confirmIcon.hovered()
     });
     config.showConfirm.addEventListener('mouseleave', () => {
-        IconHovered(false, config.showConfirm, config.showConfirmationIcon);
+        const confirmIcon = new IconHoverHandler(false, config.showConfirm, config.showConfirmationIcon);
+        confirmIcon.unHovered();
     });
     config.showConfirm.addEventListener('click', () => {
         DomElementController("passwordVisibility", config.confirmPasswordField, config.showConfirmationIcon);
