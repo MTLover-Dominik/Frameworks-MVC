@@ -3,10 +3,9 @@ import { DarkModeHover, getDarkMode} from "./js/modules/darkmode.js";
 import { Restriction } from "./js/modules/restrictionsLoginRegister.js";
 import { ValidatePassword } from "./js/modules/validators/password.js";
 import { DomElementController } from "./js/modules/domElementController.js";
-import { IconHoverHandler } from "./js/modules/helper.js";
 import { ValidateEmail } from "./js/modules/validators/email.js";
 
-const domController = new DomElementController()
+const domController = new DomElementController();
 
 function LoginStatus () {
     const loginSuccess = localStorage.getItem("loginSuccess");
@@ -40,8 +39,9 @@ if (config.isCurrentPageLoginPage) {
 if (config.isCurrentPageRegisterPage) {
     config.emailField.addEventListener('focusin', () => {
         domController.performAction("showEmailValidationMessage")
-        document.addEventListener('keyup', () => {
-            domController.performAction("emailValidationStatus", ValidateEmail());
+        const emailValidationIcon = document.getElementById("emailValidationIcon");
+        config.emailField.addEventListener('keyup', () => {
+            domController.performAction("emailValidationStatus", emailValidationIcon, "",  ValidateEmail());
         }, false);
     }, false);
     config.emailField.addEventListener('focusout', () => {
@@ -49,7 +49,7 @@ if (config.isCurrentPageRegisterPage) {
     }, false);
     config.passwordField.addEventListener('focusin', () => {
         domController.performAction("createPasswordSpecs");
-        document.addEventListener('keyup', () => {
+        config.passwordField.addEventListener('keyup', () => {
             ValidatePassword();
         }, false);
     }, false);
@@ -67,7 +67,7 @@ if (config.isCurrentPageRegisterPage) {
     }, false);
     config.confirmPasswordField.addEventListener('focusin', () => {
         domController.performAction("showConfirmationStatus");
-        document.addEventListener('keyup', () => {
+        config.confirmPasswordField.addEventListener('keyup', () => {
             domController.performAction("changeConfirmationStatus");
         }, false)
     }, false);

@@ -1,6 +1,6 @@
 export class InputActions {
-    constructor(status = false) {
-        this.status = status;
+    constructor() {
+
     }
 
     showElement(element, value) {
@@ -9,18 +9,17 @@ export class InputActions {
     hideElement(element, value) {
         element.style.display = value;
     }
-    isEmailValid() {
-        const emailValidationIcon = document.getElementById("emailValidationIcon");
-        if (this.status) {
-            emailValidationIcon.classList.remove("fa-triangle-exclamation");
-            emailValidationIcon.classList.remove("fa");
-            emailValidationIcon.classList.add("far");
-            emailValidationIcon.classList.add("fa-circle-check");
-        } else if (!this.status) {
-            emailValidationIcon.classList.remove("fa-circle-check");
-            emailValidationIcon.classList.remove("far");
-            emailValidationIcon.classList.add("fa");
-            emailValidationIcon.classList.add("fa-triangle-exclamation");
+    isEmailValid(element, status) {
+        if (status) {
+            element.classList.remove("fa-triangle-exclamation");
+            element.classList.remove("fa");
+            element.classList.add("far");
+            element.classList.add("fa-circle-check");
+        } else if (!status) {
+            element.classList.remove("fa-circle-check");
+            element.classList.remove("far");
+            element.classList.add("fa");
+            element.classList.add("fa-triangle-exclamation");
         }
     }
     isPasswordVisible(input, elementIcon) {

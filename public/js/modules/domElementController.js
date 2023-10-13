@@ -13,7 +13,7 @@ export class DomElementController {
         this.confirmIcon = document.getElementById("confirmIcon");
     }
 
-    performAction(action, element = HTMLElement, icon, flag = false) {
+    performAction(action, element = HTMLElement, icon, flag) {
         if (typeof element === 'undefined' || element instanceof HTMLElement) {
             element = element || "";
         }
@@ -29,7 +29,7 @@ export class DomElementController {
                 this.inputAction.showElement(this.emailRequirements, "block");
                 break;
             case "emailValidationStatus":
-                this.inputAction.isEmailValid(flag);
+                this.inputAction.isEmailValid(element, flag);
                 break;
             case "hideEmailValidationMessage":
                 this.inputAction.hideElement(this.emailRequirements, "none");
