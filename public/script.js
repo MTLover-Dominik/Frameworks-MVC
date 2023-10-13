@@ -3,8 +3,9 @@ import { DarkModeHover, getDarkMode} from "./js/modules/darkmode.js";
 import { Restriction } from "./js/modules/restrictionsLoginRegister.js";
 import { ValidatePassword } from "./js/modules/validators/password.js";
 import { DomElementController } from "./js/modules/domElementController.js";
-import { IconHovered } from "./js/modules/helper.js";
 import { ValidateEmail } from "./js/modules/validators/email.js";
+
+const domController = new DomElementController();
 
 function LoginStatus () {
     const loginSuccess = localStorage.getItem("loginSuccess");
@@ -37,49 +38,50 @@ if (config.isCurrentPageLoginPage) {
 }
 if (config.isCurrentPageRegisterPage) {
     config.emailField.addEventListener('focusin', () => {
-        DomElementController("showEmailValidationMessage")
-        document.addEventListener('keyup', () => {
-            DomElementController("emailValidationStatus", "", "", ValidateEmail());
+        domController.performAction("showEmailValidationMessage")
+        const emailValidationIcon = document.getElementById("emailValidationIcon");
+        config.emailField.addEventListener('keyup', () => {
+            domController.performAction("emailValidationStatus", emailValidationIcon, "",  ValidateEmail());
         }, false);
     }, false);
     config.emailField.addEventListener('focusout', () => {
-        DomElementController("hideEmailValidationMessage")
+        domController.performAction("hideEmailValidationMessage")
     }, false);
     config.passwordField.addEventListener('focusin', () => {
-        DomElementController("createPasswordSpecs");
-        document.addEventListener('keyup', () => {
+        domController.performAction("createPasswordSpecs");
+        config.passwordField.addEventListener('keyup', () => {
             ValidatePassword();
         }, false);
     }, false);
     config.passwordField.addEventListener('focusout', () => {
-        DomElementController("removePasswordSpecs");
+        domController.performAction("removePasswordSpecs");
     }, false);
     config.showPassword.addEventListener('mouseover', () => {
-        IconHovered(true, config.showPassword, config.showPasswordIcon);
+        domController.performAction('iconHovered', config.showPassword, config.showPasswordIcon, true);
     });
     config.showPassword.addEventListener('mouseleave', () => {
-        IconHovered(false, config.showPassword, config.showPasswordIcon);
+        domController.performAction('iconUnHovered', config.showPassword, config.showPasswordIcon, false);
     });
     config.showPassword.addEventListener('click', () => {
-        DomElementController("passwordVisibility", config.passwordField, config.showPasswordIcon);
+        domController.performAction("passwordVisibility", config.passwordField, config.showPasswordIcon);
     }, false);
     config.confirmPasswordField.addEventListener('focusin', () => {
-        DomElementController("showConfirmationStatus");
-        document.addEventListener('keyup', () => {
-            DomElementController("changeConfirmationStatus");
+        domController.performAction("showConfirmationStatus");
+        config.confirmPasswordField.addEventListener('keyup', () => {
+            domController.performAction("changeConfirmationStatus");
         }, false)
     }, false);
     config.confirmPasswordField.addEventListener('focusout', () => {
-        DomElementController("hideConfirmationStatus");
+        domController.performAction("hideConfirmationStatus");
     }, false);
     config.showConfirm.addEventListener('mouseover', () => {
-        IconHovered(true, config.showConfirm, config.showConfirmationIcon);
+        domController.performAction('iconHovered', config.showConfirm, config.showConfirmationIcon, true);
     });
     config.showConfirm.addEventListener('mouseleave', () => {
-        IconHovered(false, config.showConfirm, config.showConfirmationIcon);
+        domController.performAction('iconUnHovered', config.showConfirm, config.showConfirmationIcon, false);
     });
     config.showConfirm.addEventListener('click', () => {
-        DomElementController("passwordVisibility", config.confirmPasswordField, config.showConfirmationIcon);
+        domController.performAction("passwordVisibility", config.confirmPasswordField, config.showConfirmationIcon);
     }, false);
     config.registrationForm.addEventListener('input', () => {
         Restriction("register");

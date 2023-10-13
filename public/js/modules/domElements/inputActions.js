@@ -1,56 +1,47 @@
-import * as config from "../../config.js";
+export class InputActions {
+    constructor() {
 
-export function ShowEmailValidationMessage() {
-    config.emailRequirements.style.display = "block";
-}
-export function EmailValidationStatus(status) {
-    const emailValidationIcon = document.getElementById("emailValidationIcon")
-    console.log("%cthe status is: " + status, "color: blue");
-    if (status === false) {
-        emailValidationIcon.classList.remove("fa-circle-check");
-        emailValidationIcon.classList.remove("far");
-        emailValidationIcon.classList.add("fa");
-        emailValidationIcon.classList.add("fa-triangle-exclamation");
-    } else if (status === true) {
-        emailValidationIcon.classList.remove("fa-triangle-exclamation");
-        emailValidationIcon.classList.remove("fa");
-        emailValidationIcon.classList.add("far");
-        emailValidationIcon.classList.add("fa-circle-check");
     }
-}
-export function HideEmailValidationMessage() {
-    config.emailRequirements.style.display = "none";
-}
 
-export function PasswordVisibility(element, elementIcon) {
-    if (element.type === "password") {
-        element.type = "text";
-        elementIcon.classList.remove("fa-eye");
-        elementIcon.classList.add("fa-eye-slash");
-    } else if (element.type === "text") {
-        element.type = "password";
-        elementIcon.classList.remove("fa-eye-slash");
-        elementIcon.classList.add("fa-eye");
+    showElement(element, value) {
+        element.style.display = value;
     }
-}
-
-export function ShowConfirmationStatus() {
-    const confirmationStatus = document.getElementById("statusIcon");
-    confirmationStatus.style.display = "flex";
-}
-export function ChangeConfirmationStatus(passwordStatus) {
-    const confirmationStatusIcon = document.getElementById("confirmIcon");
-    if (passwordStatus === false) {
-        confirmationStatusIcon.classList.remove("fa-check");
-        confirmationStatusIcon.classList.add("fa-xmark");
-        confirmationStatusIcon.style.color = "red";
-    } else if (passwordStatus === true) {
-        confirmationStatusIcon.classList.remove("fa-xmark");
-        confirmationStatusIcon.classList.add("fa-check");
-        confirmationStatusIcon.style.color = "green";
+    hideElement(element, value) {
+        element.style.display = value;
     }
-}
-export function HideConfirmationStatus() {
-    const confirmationStatus = document.getElementById("statusIcon");
-    confirmationStatus.style.display = "none";
+    isEmailValid(element, status) {
+        if (status) {
+            element.classList.remove("fa-triangle-exclamation");
+            element.classList.remove("fa");
+            element.classList.add("far");
+            element.classList.add("fa-circle-check");
+        } else if (!status) {
+            element.classList.remove("fa-circle-check");
+            element.classList.remove("far");
+            element.classList.add("fa");
+            element.classList.add("fa-triangle-exclamation");
+        }
+    }
+    isPasswordVisible(input, elementIcon) {
+        if (input.type === "password") {
+            input.type = "text";
+            elementIcon.classList.remove("fa-eye");
+            elementIcon.classList.add("fa-eye-slash");
+        } else if (input.type === "text") {
+            input.type = "password";
+            elementIcon.classList.remove("fa-eye-slash");
+            elementIcon.classList.add("fa-eye");
+        }
+    }
+    changeConfirmationStatus(confirmationStatusIcon, passwordStatus) {
+        if (!passwordStatus) {
+            confirmationStatusIcon.classList.remove("fa-check");
+            confirmationStatusIcon.classList.add("fa-xmark");
+            confirmationStatusIcon.style.color = "red";
+        } else if (passwordStatus) {
+            confirmationStatusIcon.classList.remove("fa-xmark");
+            confirmationStatusIcon.classList.add("fa-check");
+            confirmationStatusIcon.style.color = "green";
+        }
+    }
 }
