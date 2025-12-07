@@ -1,9 +1,9 @@
 //js
-const bcrypt = require("bcryptjs");
-LocalStrategy = require("passport-local").Strategy;
+import bcrypt from 'bcryptjs';
+LocalStrategy = require('passport-local').Strategy;
 //Load model
-const User = require("../models/User");
-const loginCheck = passport => {
+import User from '../models/User.js';
+export function loginCheck (passport) {
     passport.use(
         new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
             //Check customer
@@ -38,7 +38,4 @@ const loginCheck = passport => {
             done(error, null);
         }
     });
-};
-module.exports = {
-    loginCheck,
 };

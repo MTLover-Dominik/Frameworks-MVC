@@ -1,12 +1,13 @@
 //js
-const express = require('express');
+import express from 'express';
+import session from 'express-session';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import passport from 'passport';
+import { loginCheck } from './auth/passport.js';
+
 const app = express();
-const mongoose = require('mongoose');
-const dotenv = require("dotenv");
 dotenv.config();
-const session = require('express-session');
-const passport = require('passport');
-const { loginCheck } = require('./auth/passport');
 loginCheck(passport);
 
 // Mongo DB conncetion

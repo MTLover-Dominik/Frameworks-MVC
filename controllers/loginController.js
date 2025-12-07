@@ -1,7 +1,7 @@
 //js
-const passport = require("passport");
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
+import passport from 'passport';
+import User from '../models/User';
+import bcrypt from 'bcryptjs';
 //For Register Page
 const registerView = (req, res) => {
     res.render("register", {});

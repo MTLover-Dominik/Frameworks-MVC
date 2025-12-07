@@ -1,10 +1,10 @@
 //js
-const express = require('express');
-const {homepageView} = require("../controllers/homepageController");
-const { registerView, loginView } = require('../controllers/loginController');
-const { registerUser, loginUser } = require('../controllers/loginController');
-const { dashboardView } = require("../controllers/dashboardController");
-const { protectRoute } = require("../auth/protect");
+import express from 'express';
+import {homepageView} from '../controllers/homepageController.js';
+import { registerView, loginView } from '../controllers/loginController.js';
+import { registerUser, loginUser } from '../controllers/loginController.js';
+import { dashboardView } from '../controllers/dashboardController.js';
+import { protectRoute } from '../auth/protect.js';
 const router = express.Router();
 router.get('/homepage', homepageView);
 router.get('/register', registerView);
